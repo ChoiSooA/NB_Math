@@ -9,7 +9,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class DoTEffect : MonoBehaviour
 {

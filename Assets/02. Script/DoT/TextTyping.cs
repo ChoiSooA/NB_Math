@@ -30,7 +30,7 @@ public class TextTyping : MonoBehaviour
         }
         else if (addment.Length == 0 && originalText != null) //addment가 없고 originalText가 있을 때
         {
-            //Audio_Manager.Instance.PlayMent(mentClip[0]);
+            Audio_Manager.Instance.PlayMent(mentClip[0]);
             StartCoroutine(FinishOriginalMent());
         }
     }

@@ -50,15 +50,18 @@ public class TextTyping : MonoBehaviour
             outMent.text = "";
             if (mentClip[i] != null)
             {
+                float textSpeed = mentClip[i].length;
+                outMent.DOText(addment[i], textSpeed).SetEase(Ease.Linear);
                 Audio_Manager.Instance.PlayMent(mentClip[i]);
+                yield return new WaitForSeconds(textSpeed + 0.6f);
             }
             else
             {
                 //Debug.Log("멘트 클립이 비어있습니다.");
+                float nextSpeed = addment[i].Length * typingSpeed;
+                outMent.DOText(addment[i], nextSpeed).SetEase(Ease.Linear);
+                yield return new WaitForSeconds(nextSpeed + 0.6f);
             }
-            float nextSpeed = addment[i].Length * typingSpeed;
-            outMent.DOText(addment[i], nextSpeed).SetEase(Ease.Linear);
-            yield return new WaitForSeconds(nextSpeed + 0.6f);
         }
         if (event_finish != null)
         {

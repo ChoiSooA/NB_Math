@@ -185,7 +185,7 @@ public class MissionTwo : MonoBehaviour
             if (right.NowCount > 0) right.DespawnOne();
 
             leftCountText.text = left.NowCount.ToString();
-            rightCountText.text = right.NowCount.ToString();
+            rightCountText.text = rightSpawner.NowCount.ToString();
 
             yield return new WaitForSeconds(0.6f);
         }
@@ -216,7 +216,7 @@ public class MissionTwo : MonoBehaviour
         string resultMessage = answeredCorrectly
             ? $"선택한 캐릭터가 <size=110%>{diff}개</size> 더 많아서 <color=#76B467>정답</color>이에요!"
             : $"선택한 캐릭터가 <size=110%>{diff}개</size> 적어서 <color=#DD6C6C>틀렸어요</color>!";
-        //string guideMessage;
+
         if (currentQuestion < questionCount)
         {
             instructionText.text = resultMessage + "\n<size=80%>다음 문제를 눌러주세요.</size>";
@@ -224,11 +224,12 @@ public class MissionTwo : MonoBehaviour
         else
         {
             instructionText.text = resultMessage + "\n<size=80%>모든 퀴즈가 끝났어요! 다음으로 넘어가요.</size>";
-            StartCoroutine(PlaySequentialClips(correctClip, clearClip));
-        }
-            
 
-        //instructionText.text = resultMessage + "\n" + guideMessage;
+            // 정답 여부에 따라 맞는 clip 넘기기
+            AudioClip firstClip = answeredCorrectly ? correctClip : wrongClip;
+            StartCoroutine(PlaySequentialClips(firstClip, clearClip));
+        }
+
         nextButton.gameObject.SetActive(true);
     }
 

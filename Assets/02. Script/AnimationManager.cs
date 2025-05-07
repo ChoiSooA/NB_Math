@@ -52,7 +52,7 @@ public class AnimationManager : MonoBehaviour
 
     public void PlayAnimation(string animationName)
     {
-        Debug.Log($"[PlayAnimation] {animationName}");
+        //Debug.Log($"[PlayAnimation] {animationName}");
 
         foreach (var param in animator.parameters)
         {
@@ -91,7 +91,7 @@ public class AnimationManager : MonoBehaviour
         float length = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(length);
 
-        Debug.Log(animName + " 애니메이션 종료");
+        //Debug.Log(animName + " 애니메이션 종료");
         PlayAnimation("Idle");
 
         currentCoroutine = null;

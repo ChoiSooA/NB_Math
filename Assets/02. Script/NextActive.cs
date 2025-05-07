@@ -33,22 +33,15 @@ public class NextActive : MonoBehaviour
         {
             Debug.Log("다음 버튼을 없음");
         }
-        if (startFalseObject.Length == 0)
-        {
-            return;
-        }
-        else
+        if (startFalseObject.Length != 0)
         {
             for (int i = 0; i < startFalseObject.Length; i++)
             {
                 startFalseObject[i].SetActive(false);
             }
         }
-        if (startTrueObject.Length == 0)
-        {
-            return;
-        }
-        else
+
+        if (startTrueObject.Length != 0)
         {
             for (int i = 0; i < startTrueObject.Length; i++)
             {
